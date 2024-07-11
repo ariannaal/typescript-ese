@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Article } from '../interfaces/IFetch';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,12 +27,15 @@ const FetchArticles = () => {
 
 
     return (
-        <div style={{ width: "600px" }} className='mx-auto text-center article' >
+
+        <div style={{ width: "600px" }} className='mx-auto text-center article'>
             <h1 className='mt-3'>Articles</h1>
             {data.map((article: Article) => (
                 <div key={article.id}>
                     <h2 className='mt-4'>{article.title}</h2>
-                    <img src={article.image_url} alt="immagine-articolo" style={{ width: '600px', height: 'auto' }} />
+                    <Link to={`/article/${article.id}`}>
+                        <img src={article.image_url} alt="immagine-articolo" style={{ width: '600px', height: 'auto' }} />
+                    </Link>
                     <p className='mt-3 summary'>{article.summary}</p>
                     <h6 className='my-3'>News site: {article.news_site}</h6>
                     <p><span className='fw-bold'>Published at:</span> {new Date(article.published_at).toLocaleDateString()}</p>

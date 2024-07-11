@@ -7,3 +7,4 @@ export interface Article {
     image_url: string;
     url: string;
 }
+

@@ -1,17 +1,22 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import FunctionalComponent from './components/FunctionalComponent';
 import MyNavbar from './components/MyNavbar';
 import FetchArticles from './components/FetchArticles';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DetailComponent from './components/DetailComponent';
 
 function App() {
   return (
-    <div className="App">
-      <MyNavbar />
-      {/* <FunctionalComponent title="TITOLO" /> */}
-      <FetchArticles />
-    </div>
+    <BrowserRouter >
+      <div className="App">
+        <MyNavbar />
+        <Routes>
+          <Route path="/" element={<FetchArticles />} />
+          <Route path="/article/:id" element={<DetailComponent />} />
+        </Routes>
+      </div>
+    </BrowserRouter >
   );
 }
 
